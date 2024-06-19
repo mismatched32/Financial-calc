@@ -1,0 +1,27 @@
+Create a function that produces an interactive polynomial graph (with sliders). Use code from an earlier step.
+
+import numpy as np
+import matplotlib.pyplot as plt
+from ipywidgets import interact, FloatSlider
+
+def plot_polynomial(a, b, c):
+    x = np.linspace(-10, 10, 400)
+    y = a * x**2 + b * x + c
+
+    plt.figure(figsize=(8, 6))
+    plt.plot(x, y, label=f'{a}x^2 + {b}x + {c}')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Polynomial Graph')
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+def interactive_polynomial_graph():
+    a_slider = FloatSlider(value=1.0, min=-10.0, max=10.0, step=0.5, description='a:')
+    b_slider = FloatSlider(value=0.0, min=-10.0, max=10.0, step=0.5, description='b:')
+    c_slider = FloatSlider(value=0.0, min=-10.0, max=10.0, step=0.5, description='c:')
+
+    interact(plot_polynomial, a=a_slider, b=b_slider, c=c_slider)
+
+interactive_polynomial_graph()
