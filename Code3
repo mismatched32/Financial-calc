@@ -1,0 +1,25 @@
+Create a function to print the time required for money to double, given the rate. Use the continuous growth formula from an earlier step.
+
+import math
+
+def time_to_double(principal, annual_interest_rate):
+    if annual_interest_rate <= 0:
+        return "Invalid interest rate. It should be greater than 0."
+
+    doubling_time = math.log(2) / (annual_interest_rate / 100)
+    time_years = doubling_time
+    return time_years
+
+def main():
+    principal = float(input("Enter the principal amount: "))
+    annual_interest_rate = float(input("Enter the annual interest rate (in percentage): "))
+
+    time_years = time_to_double(principal, annual_interest_rate)
+
+    if isinstance(time_years, str):
+        print(time_years)
+    else:
+        print("Time required for money to double: {:.2f} years".format(time_years))
+
+if __name__ == "__main__":
+    main()
