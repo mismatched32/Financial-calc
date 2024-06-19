@@ -1,0 +1,26 @@
+Define a function for calculating mortgage payments and a function for calculating investment balance. Use code you wrote in earlier steps. Each function should prompt for input and print the output.
+def calculate_mortgage_payment(principal, annual_interest_rate, years):
+    monthly_interest_rate = annual_interest_rate / 12 / 100
+    num_payments = years * 12
+    monthly_payment = principal * monthly_interest_rate / (1 - (1 + monthly_interest_rate) ** -num_payments)
+    return monthly_payment
+
+def calculate_investment_balance(principal, annual_interest_rate, years):
+    monthly_interest_rate = annual_interest_rate / 12 / 100
+    num_payments = years * 12
+    balance = principal * ((1 + monthly_interest_rate) ** num_payments)
+    return balance
+
+def main():
+    principal = float(input("Enter the principal amount: "))
+    annual_interest_rate = float(input("Enter the annual interest rate (in percentage): "))
+    years = int(input("Enter the number of years: "))
+
+    mortgage_payment = calculate_mortgage_payment(principal, annual_interest_rate, years)
+    investment_balance = calculate_investment_balance(principal, annual_interest_rate, years)
+
+    print("\nMortgage Payment:", round(mortgage_payment, 2))
+    print("Investment Balance:", round(investment_balance, 2))
+
+if __name__ == "__main__":
+    main()
